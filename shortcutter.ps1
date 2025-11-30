@@ -12,10 +12,11 @@ Add-Type -AssemblyName PresentationFramework
 # --- XAML for the window (grouped by category) ---
 $xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Shortcut Hub"
-        Height="600" Width="820"
-        WindowStartupLocation="CenterScreen">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Shortcutter"
+    Height="820" Width="1060" MinHeight="620" MinWidth="800"
+    ResizeMode="CanResize"
+    WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,11 +24,25 @@ $xaml = @"
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0"
-                   Text="Click a button to create a desktop shortcut. Only installed apps are shown."
-                   FontSize="14"
-                   Margin="0,0,0,10"
-                   TextWrapping="Wrap"/>
+        <!-- Header: logo + app name + short description -->
+        <Grid Grid.Row="0" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Simple vector logo built with shapes so no external image is required -->
+            <Border Width="64" Height="64" CornerRadius="10" Background="#FF2D89EF" VerticalAlignment="Top">
+                <Grid>
+                    <TextBlock Text="S" Foreground="White" FontWeight="Bold" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                <TextBlock Text="Shortcutter" FontSize="22" FontWeight="Bold" />
+                <TextBlock Text="Click a button to create a desktop shortcut. Only installed apps are shown." FontSize="13" Foreground="#444444" TextWrapping="Wrap"/>
+            </StackPanel>
+        </Grid>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
