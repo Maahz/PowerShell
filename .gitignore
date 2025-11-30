@@ -1,0 +1,11 @@
+# Ignore helper script and generated app name list
+extract_app_names.ps1
+_app_names.txt
+
+# Ignore PowerShell debug/log files
+shortcutter-debug.log
+
+# Optional: ignore user-specific VS Code and OS files
+.vscode/
+Thumbs.db
+desktop.ini
